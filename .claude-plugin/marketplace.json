@@ -1,0 +1,16 @@
+{
+  "name": "claude-code-next-steps-zh",
+  "owner": {
+    "name": "SynchronicEros"
+  },
+  "metadata": {
+    "description": "下一步建議繁中版：改寫自社群 plugin next-steps，建議與介面一律繁體中文"
+  },
+  "plugins": [
+    {
+      "name": "next-steps-zh",
+      "source": "./",
+      "description": "下一步建議繁中版：改寫自社群 plugin next-steps，建議與介面一律繁體中文"
+    }
+  ]
+}
