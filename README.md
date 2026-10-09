@@ -4,9 +4,10 @@
 
 ## 安裝
 
-- 需要 **Claude Code（付費方案）**；Codex 免費版不能安裝（只有 Codex 的人，改照[範本 repo](https://github.com/SynchronicEros/eros-kmu-learning-example) README「只用 Codex 的人」一節）。
+- 需要 **Claude Code（付費方案）**；Codex 免費版不能安裝（只有 Codex 的人，改照[範本 repo 的「只用 Codex 的人」](https://github.com/SynchronicEros/eros-kmu-learning-example#只用-codex不用-claude-code的人)）。
 - 還沒裝 Claude Code：見[官方安裝說明](https://code.claude.com/docs/zh-TW/setup)。
 - 需要 Claude Code **v2.1.287 以上**（Mods 的 API 仍屬 early access，也就是搶先體驗版，引擎更新可能使 Mod 失效）。
+- Mac 第一次安裝可能跳出安裝「命令列開發者工具」的視窗：按「安裝」，裝完再重跑一次指令。
 - Windows：Windows 版 Claude Code 也能安裝；本 Mod 不呼叫外部指令，不需另裝工具（作者尚未在 Windows 實機測試）。
 
 **指令貼在哪裡**：貼在**終端機**，貼上後按 Enter（Mac：按 ⌘＋空白鍵開 Spotlight，搜尋「終端機」；Windows：在開始選單搜尋「PowerShell」）。不是貼在 Claude Code 的對話框。若終端機回應 `command not found`（找不到指令），表示終端機裡還沒有 Claude Code：照上面的官方安裝說明安裝；只用桌面版的人，改用下方「對話框裡」的寫法。
@@ -31,17 +32,23 @@ claude plugin install next-steps-zh@claude-code-next-steps-zh
 
 裝好後要**開新的 session（一次新對話）**才會生效：終端機版先打 `/exit` 離開，再打 `claude`；桌面版開一個新對話。
 
+**不可與官方 `next-steps` 同時啟用**（會出現兩組建議）。先用 `claude plugin list` 看有沒有 `next-steps@claude-community`；**沒有就不用做**，有的話停用（對話框裡打 `/plugin disable` 開啟面板操作）：
+
+```bash
+claude plugin disable next-steps@claude-community
+```
+
 **總目錄與本 repo 二擇一**：同一個 Mod 或 skill 只從一處安裝（skill 兩處都裝會出現兩份）。用 `claude plugin list` 檢查；若同時看到 `next-steps-zh@claude-code-next-steps-zh` 與 `next-steps-zh@claude-code-mods-zh`，**保留總目錄那份**，移除本 repo 這份（只執行一次）：
 
 ```bash
 claude plugin uninstall next-steps-zh@claude-code-next-steps-zh
 ```
 
-再用 `claude plugin list` 確認只剩一份。重複執行會出現 ✘ 與「not installed」，表示已經移除過，無害。
+再用 `claude plugin list` 確認只剩一份。重複執行，或對沒裝的東西執行時，出現 ✘ 與「not installed」或「already disabled」都無害。對話框裡：打 `/plugin`、按 Tab 切到 Installed 分頁檢查，打 `/plugin uninstall` 開啟面板移除。桌面版：按輸入框旁的「＋」→ Plugins → Manage plugins，可停用或移除。
 
 ## 更新
 
-有新版時，在終端機依你當初的安裝來源執行兩行，再開新的 session。從本 repo 裝的：
+有新版時，在終端機執行兩行，再開新的 session。從本 repo 裝的：
 
 ```bash
 claude plugin marketplace update claude-code-next-steps-zh
@@ -51,9 +58,21 @@ claude plugin marketplace update claude-code-next-steps-zh
 claude plugin update next-steps-zh@claude-code-next-steps-zh
 ```
 
-從總目錄裝的：把兩行裡的 `claude-code-next-steps-zh` 換成 `claude-code-mods-zh`。只打第二行會顯示「already at the latest version」，因為還沒先抓新的目錄。
+從總目錄裝的：
+
+```bash
+claude plugin marketplace update claude-code-mods-zh
+```
+
+```bash
+claude plugin update next-steps-zh@claude-code-mods-zh
+```
+
+看到「already at the latest version」就代表已是最新版。對話框裡：先打 `/plugin marketplace update <上面的來源名稱>`，再打 `/plugin`、按 Tab 切到 Installed 分頁，選這個 plugin → Update now。桌面版的更新方式官方文件沒有說明，找不到的話請改用終端機。
 
 全部 Mod 與 skill 見總目錄 [claude-code-mods-zh](https://github.com/SynchronicEros/claude-code-mods-zh)。
+
+## 與原版差異
 
 改寫自 Thariq Shihipar 之社群 plugin `next-steps` 1.0.0，與原版差異（詳見 [NOTICE.md](NOTICE.md)）：
 
@@ -62,14 +81,6 @@ claude plugin update next-steps-zh@claude-code-next-steps-zh
 - 回答短於 300 字不給建議（原版 80），省分身額度。
 - 子代理的回合不產生建議，也不替換已出現的建議。
 - 標籤依顯示寬度截至約 24 個中文字；每顆按鈕有固定識別碼。
-
-**不可與官方 `next-steps` 同時啟用**（會出現兩組建議）。先用 `claude plugin list` 看有沒有 `next-steps@claude-community`；**沒有就不用做**，有的話停用：
-
-```bash
-claude plugin disable next-steps@claude-community
-```
-
-（沒裝過官方版卻執行這行，會顯示 ✘ 與「already disabled」，無害。）
 
 ## 設定（userConfig）
 
@@ -90,4 +101,4 @@ MIT（見 [LICENSE](LICENSE)）；改寫自 Thariq Shihipar 之 `next-steps`，�
 
 **English:** Up to three next-prompt suggestions above the prompt after each turn, in Traditional Chinese; press 1/2/3 (or click) to put one in the prompt box as a draft, 0 to dismiss. Adapted from Thariq Shihipar's community plugin `next-steps` 1.0.0 — see NOTICE.md for the license and the list of changes (Chinese output, picks always appended, default threshold 300, subagent turns ignored, width-based label cut, keyed buttons). Do not enable it together with the official `next-steps`.
 
-**Install / License (English):** Requires Claude Code (a paid plan); the free Codex tier cannot install it. Claude Code v2.1.287+ (check with `claude --version`); works on Windows without extra tools (not yet tested there). `claude plugin marketplace add SynchronicEros/claude-code-next-steps-zh`, then `claude plugin install next-steps-zh@claude-code-next-steps-zh`; takes effect in new sessions. Install from either this repo or the index, not both (keep the index copy). To update, run `claude plugin marketplace update` for your source first, then `claude plugin update`. All mods and skills: [claude-code-mods-zh](https://github.com/SynchronicEros/claude-code-mods-zh). MIT. Adapted from Thariq Shihipar's `next-steps`; see [NOTICE.md](NOTICE.md).
+**Install / License (English):** Requires Claude Code (a paid plan); the free Codex tier cannot install it. Claude Code v2.1.287+ (check with `claude --version`); works on Windows without extra tools (not yet tested there). `claude plugin marketplace add SynchronicEros/claude-code-next-steps-zh`, then `claude plugin install next-steps-zh@claude-code-next-steps-zh`; takes effect in new sessions. Install from either this repo or the index, not both (keep the index copy). To update, run `claude plugin marketplace update <source>`, then `claude plugin update <name>@<source>`. All mods and skills: [claude-code-mods-zh](https://github.com/SynchronicEros/claude-code-mods-zh). MIT. Adapted from Thariq Shihipar's `next-steps`; see [NOTICE.md](NOTICE.md).
