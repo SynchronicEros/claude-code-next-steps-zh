@@ -41,10 +41,10 @@ claude plugin marketplace add SynchronicEros/claude-code-next-steps-zh
 claude plugin install next-steps-zh@claude-code-next-steps-zh
 ```
 
-安裝或更新後，**新開的 session 才會生效**。三個 Mod 一起管理，見總目錄 [claude-code-mods-zh](https://github.com/SynchronicEros/claude-code-mods-zh)。
+安裝或更新後，**新開的 session 才會生效**。全部 Mod 與 skill 一起管理，見總目錄 [claude-code-mods-zh](https://github.com/SynchronicEros/claude-code-mods-zh)。
 
 ## 授權
 
 MIT（見 [LICENSE](LICENSE)）；改寫自 Thariq Shihipar 之 `next-steps`，原作授權與修改說明見 [NOTICE.md](NOTICE.md)。
 
-**Install / License (English):** Claude Code v2.1.287+. `claude plugin marketplace add SynchronicEros/claude-code-next-steps-zh`, then `claude plugin install next-steps-zh@claude-code-next-steps-zh`; takes effect in new sessions. All three mods: [claude-code-mods-zh](https://github.com/SynchronicEros/claude-code-mods-zh). MIT. Adapted from Thariq Shihipar's `next-steps`; see [NOTICE.md](NOTICE.md).
+**Install / License (English):** Claude Code v2.1.287+. `claude plugin marketplace add SynchronicEros/claude-code-next-steps-zh`, then `claude plugin install next-steps-zh@claude-code-next-steps-zh`; takes effect in new sessions. All mods and skills: [claude-code-mods-zh](https://github.com/SynchronicEros/claude-code-mods-zh). MIT. Adapted from Thariq Shihipar's `next-steps`; see [NOTICE.md](NOTICE.md).
